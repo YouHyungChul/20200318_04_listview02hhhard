@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,29 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
+
+        binding.roomListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Room clickedRoom = roomDatas.get(position);
+                Toast.makeText(mContext, clickedRoom.getAddress(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.roomListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Room data = roomDatas.get(position);
+                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
+                return true; // true : 롱클릭만, false : 그냥클릭도 같이 출력됨
+            }
+        });
+
+
+
+
 
     }
 
