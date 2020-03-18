@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,28 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         if(row == null){
             row = inf.inflate(R.layout.room_list_item, null);
         }
+
+        Room data = mList.get(position);
+
+        TextView priceTxt = row.findViewById(R.id.priceTxt);
+        TextView addressAndFloorTxt = row.findViewById(R.id.addressAndFloorTxt);
+        TextView descTxt = row.findViewById(R.id.descTxt);
+
+//        가격설정 => setText에는 int값을 넣지 말자
+//        priceTxt.setText(data.getPrice());  ==> 잘못된 예제 이렇게 하면 앱 터진다
+//        1만이상? 억 단위, 아니면? 숫자만 , 찍어서
+
+        if (data.getPrice() >= 10000){
+//            ?억 %,d로 구하자      ?억??   ?천??
+            int uk = data.getPrice() / 10000;
+            int thousand = data.getPrice()%10000;
+
+            priceTxt.setText(String.format("%d억 %,d", uk, thousand));
+
+        }else {
+            priceTxt.setText(String.format("%,d", data.getPrice()));
+        }
+
         return row;
     }
 }
