@@ -58,6 +58,9 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             priceTxt.setText(String.format("%,d", data.getPrice()));
         }
 
+//        설명은 들어온 그대로 출력.
+        descTxt.setText(data.getDescription());
+
         return row;
     }
 }
