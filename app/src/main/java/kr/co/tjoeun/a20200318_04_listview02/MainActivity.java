@@ -36,5 +36,20 @@ public class MainActivity extends BaseActivity {
 
         roomAdapter = new RoomAdapter(mContext, R.layout.room_list_item,roomDatas);
         binding.roomListView.setAdapter(roomAdapter);
+
+        addRooms();
     }
+
+    private void addRooms() {
+        roomDatas.add(new Room(80020, "함양", 4, "살기좋은 방입니다."));
+        roomDatas.add(new Room(81000, "서울", 2, "꺼져."));
+        roomDatas.add(new Room(89000, "경기", 1, "티모."));
+        roomDatas.add(new Room(85000, "부산", -1, "원."));
+        roomDatas.add(new Room(81000, "대구", 0, "투."));
+        roomDatas.add(new Room(78000, "베이징", 5, "아파트"));
+
+        roomAdapter.notifyDataSetChanged();
+    }
+
+
 }
