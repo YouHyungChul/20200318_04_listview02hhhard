@@ -1,6 +1,7 @@
 package kr.co.tjoeun.a20200318_04_listview02;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 
@@ -11,7 +12,9 @@ public class RoomDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_room_detail);
+        setupEvents();
+        setValues();
     }
 
     @Override
