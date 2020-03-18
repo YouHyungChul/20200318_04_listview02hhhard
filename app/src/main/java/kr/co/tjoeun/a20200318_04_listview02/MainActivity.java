@@ -3,6 +3,7 @@ package kr.co.tjoeun.a20200318_04_listview02;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,7 +38,10 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Room clickedRoom = roomDatas.get(position);
-                Toast.makeText(mContext, clickedRoom.getAddress(), Toast.LENGTH_SHORT).show();
+//                방상세 화면으로 이동
+                Intent intent = new Intent(mContext, RoomDetailActivity.class);
+                intent.putExtra("room", clickedRoom);
+                startActivity(intent);
             }
         });
 
